@@ -1,0 +1,152 @@
+2026-01-03 20:16:01,565 ERROR frappe New Exception collected in error log
+Site: library.localhost
+Form Dict: {'doc': '{"name":"LMS0001","owner":"Administrator","creation":"2026-01-03 20:13:44.099666","modified":"2026-01-03 20:15:50.697550","modified_by":"Administrator","docstatus":0,"idx":0,"library_member":"LM00001","full_name":"Angele Marie","from_date":"2026-01-01","to_date":"2026-01-31","paid":0,"doctype":"Library Membership"}', 'action': 'Submit', 'cmd': 'frappe.desk.form.save.savedocs'}
+2026-01-03 20:57:07,732 ERROR frappe New Exception collected in error log
+Site: library.localhost
+Form Dict: {'doctype': 'Library Membership', 'with_parent': '1', 'cached_timestamp': '2026-01-03 20:23:43.866795', 'cmd': 'frappe.desk.form.load.getdoctype'}
+2026-01-03 20:57:31,127 ERROR frappe New Exception collected in error log
+Site: library.localhost
+Form Dict: {'doctype': 'Library Membership', 'with_parent': '1', 'cached_timestamp': '2026-01-03 20:23:43.866795', 'cmd': 'frappe.desk.form.load.getdoctype'}
+2026-01-03 20:58:06,502 ERROR frappe New Exception collected in error log
+Site: library.localhost
+Form Dict: {'doctype': 'Library Membership', 'with_parent': '1', 'cached_timestamp': '2026-01-03 20:23:43.866795', 'cmd': 'frappe.desk.form.load.getdoctype'}
+2026-01-04 07:49:16,782 ERROR frappe Could not take error snapshot: (1049, "Unknown database '_e13c465a232f2a05'")
+Site: library.localhost
+Form Dict: {}
+Traceback (most recent call last):
+  File "/home/angele/library-bench/apps/frappe/frappe/app.py", line 105, in application
+    init_request(request)
+  File "/home/angele/library-bench/apps/frappe/frappe/app.py", line 200, in init_request
+    frappe.local.http_request = HTTPRequest()
+                                ^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/auth.py", line 44, in __init__
+    self.set_session()
+  File "/home/angele/library-bench/apps/frappe/frappe/auth.py", line 81, in set_session
+    frappe.local.login_manager = LoginManager()
+                                 ^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/auth.py", line 120, in __init__
+    self.make_session(resume=True)
+  File "/home/angele/library-bench/apps/frappe/frappe/auth.py", line 214, in make_session
+    frappe.local.session_obj = Session(
+                               ^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/sessions.py", line 231, in __init__
+    self.resume()
+  File "/home/angele/library-bench/apps/frappe/frappe/sessions.py", line 310, in resume
+    data = self.get_session_record()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/sessions.py", line 328, in get_session_record
+    r = self.get_session_data()
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/sessions.py", line 345, in get_session_data
+    data = self.get_session_data_from_db()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/sessions.py", line 377, in get_session_data_from_db
+    ).run()
+      ^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/query_builder/utils.py", line 87, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/database.py", line 207, in sql
+    self.connect()
+  File "/home/angele/library-bench/apps/frappe/frappe/database/database.py", line 112, in connect
+    self._conn: MariadbConnection | PostgresConnection = self.get_connection()
+                                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/mariadb/database.py", line 108, in get_connection
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/mariadb/database.py", line 114, in _get_connection
+    return self.create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/mariadb/database.py", line 117, in create_connection
+    return pymysql.connect(**self.get_connection_settings())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1049, "Unknown database '_e13c465a232f2a05'")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/angele/library-bench/apps/frappe/frappe/utils/error.py", line 86, in log_error_snapshot
+    log_error(title=str(exception), defer_insert=True)
+  File "/home/angele/library-bench/apps/frappe/frappe/utils/error.py", line 61, in log_error
+    error_log = frappe.get_doc(
+                ^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/__init__.py", line 1308, in get_doc
+    return frappe.model.document.get_doc(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/model/document.py", line 83, in get_doc
+    controller = get_controller(doctype)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/model/base_document.py", line 67, in get_controller
+    return import_controller(doctype)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/model/base_document.py", line 82, in import_controller
+    doctype_info = frappe.db.get_value("DocType", doctype, ("module", "custom", "is_tree"), as_dict=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/database.py", line 514, in get_value
+    result = self.get_values(
+             ^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/database.py", line 618, in get_values
+    out = self._get_values_from_table(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/database.py", line 891, in _get_values_from_table
+    return query.run(as_dict=as_dict, debug=debug, update=update, run=run, pluck=pluck)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/query_builder/utils.py", line 87, in execute_query
+    result = frappe.db.sql(query, params, *args, **kwargs)  # nosemgrep
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/database.py", line 207, in sql
+    self.connect()
+  File "/home/angele/library-bench/apps/frappe/frappe/database/database.py", line 112, in connect
+    self._conn: MariadbConnection | PostgresConnection = self.get_connection()
+                                                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/mariadb/database.py", line 108, in get_connection
+    conn = self._get_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/mariadb/database.py", line 114, in _get_connection
+    return self.create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/apps/frappe/frappe/database/mariadb/database.py", line 117, in create_connection
+    return pymysql.connect(**self.get_connection_settings())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/angele/library-bench/env/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1049, "Unknown database '_e13c465a232f2a05'")
+2026-01-05 16:55:25,561 ERROR frappe New Exception collected in error log
+Site: library.localhost
+Form Dict: {'docs': '{"name":"Joella","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"idx":0,"issingle":0,"is_virtual":0,"is_tree":0,"istable":0,"editable_grid":0,"track_changes":0,"module":"Library Management","naming_rule":"","sort_field":"modified","sort_order":"DESC","read_only":0,"in_create":0,"allow_copy":0,"allow_rename":1,"allow_import":0,"hide_toolbar":0,"track_seen":0,"max_attachments":0,"document_type":"","engine":"InnoDB","is_submittable":0,"show_name_in_global_search":0,"custom":0,"beta":0,"has_web_view":0,"allow_guest_to_view":0,"email_append_to":0,"show_title_field_in_link":0,"translated_doctype":0,"is_calendar_and_gantt":0,"quick_entry":0,"grid_page_length":50,"rows_threshold_for_grid_search":20,"track_views":0,"queue_in_background":0,"allow_events_in_timeline":0,"allow_auto_repeat":0,"make_attachments_public":0,"force_re_route_to_default_view":0,"show_preview_popup":0,"protect_attached_files":0,"index_web_pages_for_search":1,"row_format":"Dynamic","doctype":"DocType","permissions":[{"name":"o5kkhcqmku","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"parent":"Joella","parentfield":"permissions","parenttype":"DocType","idx":1,"permlevel":0,"role":"System Manager","read":1,"write":1,"create":1,"submit":0,"cancel":0,"delete":1,"amend":0,"report":1,"export":1,"import":0,"share":1,"print":1,"email":1,"if_owner":0,"select":0,"doctype":"DocPerm"}],"links":[],"fields":[{"name":"o5kv6qb7a0","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"parent":"Joella","parentfield":"fields","parenttype":"DocType","idx":1,"fieldname":"section_break_hc3x","fieldtype":"Section Break","search_index":0,"show_dashboard":0,"hidden":0,"set_only_once":0,"allow_in_quick_entry":0,"print_hide":0,"report_hide":0,"reqd":0,"bold":0,"in_global_search":0,"collapsible":0,"unique":0,"no_copy":0,"allow_on_submit":0,"show_preview_popup":0,"permlevel":0,"ignore_user_permissions":0,"columns":0,"in_list_view":0,"fetch_if_empty":0,"in_filter":0,"remember_last_selected_value":0,"ignore_xss_filter":0,"print_hide_if_no_value":0,"allow_bulk_edit":0,"in_standard_filter":0,"in_preview":0,"read_only":0,"precision":"","length":0,"translatable":0,"hide_border":0,"hide_days":0,"hide_seconds":0,"non_negative":0,"is_virtual":0,"sort_options":0,"show_on_timeline":0,"make_attachment_public":0,"doctype":"DocField"}],"states":[],"actions":[],"__last_sync_on":"2026-01-05T14:55:24.068Z"}', 'method': 'check_pending_migration', 'cmd': 'run_doc_method'}
+2026-01-05 17:00:49,544 ERROR frappe Error while inserting deferred Error Log record: Error Log daf7b7i871: 'Title' ([Errno 2] No such file or directory: '/home/angele/library-bench/apps/library_management/library_management/library_management/doctype/joella/joella.json') will get truncated, as max characters allowed is 140
+Site: library.localhost
+Form Dict: {}
+2026-01-05 17:03:48,947 ERROR frappe New Exception collected in error log
+Site: library.localhost
+Form Dict: {'docs': '{"name":"Joella","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"idx":0,"issingle":0,"is_virtual":0,"is_tree":0,"istable":0,"editable_grid":0,"track_changes":0,"module":"Library Management","naming_rule":"","sort_field":"modified","sort_order":"DESC","read_only":0,"in_create":0,"allow_copy":0,"allow_rename":1,"allow_import":0,"hide_toolbar":0,"track_seen":0,"max_attachments":0,"document_type":"","engine":"InnoDB","is_submittable":0,"show_name_in_global_search":0,"custom":0,"beta":0,"has_web_view":0,"allow_guest_to_view":0,"email_append_to":0,"show_title_field_in_link":0,"translated_doctype":0,"is_calendar_and_gantt":0,"quick_entry":0,"grid_page_length":50,"rows_threshold_for_grid_search":20,"track_views":0,"queue_in_background":0,"allow_events_in_timeline":0,"allow_auto_repeat":0,"make_attachments_public":0,"force_re_route_to_default_view":0,"show_preview_popup":0,"protect_attached_files":0,"index_web_pages_for_search":1,"row_format":"Dynamic","doctype":"DocType","permissions":[{"name":"o5kkhcqmku","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"parent":"Joella","parentfield":"permissions","parenttype":"DocType","idx":1,"permlevel":0,"role":"System Manager","read":1,"write":1,"create":1,"submit":0,"cancel":0,"delete":1,"amend":0,"report":1,"export":1,"import":0,"share":1,"print":1,"email":1,"if_owner":0,"select":0,"doctype":"DocPerm"}],"links":[],"fields":[{"name":"o5kv6qb7a0","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"parent":"Joella","parentfield":"fields","parenttype":"DocType","idx":1,"fieldname":"section_break_hc3x","fieldtype":"Section Break","search_index":0,"show_dashboard":0,"hidden":0,"set_only_once":0,"allow_in_quick_entry":0,"print_hide":0,"report_hide":0,"reqd":0,"bold":0,"in_global_search":0,"collapsible":0,"unique":0,"no_copy":0,"allow_on_submit":0,"show_preview_popup":0,"permlevel":0,"ignore_user_permissions":0,"columns":0,"in_list_view":0,"fetch_if_empty":0,"in_filter":0,"remember_last_selected_value":0,"ignore_xss_filter":0,"print_hide_if_no_value":0,"allow_bulk_edit":0,"in_standard_filter":0,"in_preview":0,"read_only":0,"precision":"","length":0,"translatable":0,"hide_border":0,"hide_days":0,"hide_seconds":0,"non_negative":0,"is_virtual":0,"sort_options":0,"show_on_timeline":0,"make_attachment_public":0,"doctype":"DocField"}],"states":[],"actions":[],"__last_sync_on":"2026-01-05T15:03:47.436Z"}', 'method': 'check_pending_migration', 'cmd': 'run_doc_method'}
+2026-01-07 12:58:14,755 ERROR frappe New Exception collected in error log
+Site: library.localhost
+Form Dict: {'docs': '{"name":"Joella","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"idx":0,"issingle":0,"is_virtual":0,"is_tree":0,"istable":0,"editable_grid":0,"track_changes":0,"module":"Library Management","naming_rule":"","sort_field":"modified","sort_order":"DESC","read_only":0,"in_create":0,"allow_copy":0,"allow_rename":1,"allow_import":0,"hide_toolbar":0,"track_seen":0,"max_attachments":0,"document_type":"","engine":"InnoDB","is_submittable":0,"show_name_in_global_search":0,"custom":0,"beta":0,"has_web_view":0,"allow_guest_to_view":0,"email_append_to":0,"show_title_field_in_link":0,"translated_doctype":0,"is_calendar_and_gantt":0,"quick_entry":0,"grid_page_length":50,"rows_threshold_for_grid_search":20,"track_views":0,"queue_in_background":0,"allow_events_in_timeline":0,"allow_auto_repeat":0,"make_attachments_public":0,"force_re_route_to_default_view":0,"show_preview_popup":0,"protect_attached_files":0,"index_web_pages_for_search":1,"row_format":"Dynamic","doctype":"DocType","actions":[],"links":[],"permissions":[{"name":"o5kkhcqmku","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"parent":"Joella","parentfield":"permissions","parenttype":"DocType","idx":1,"permlevel":0,"role":"System Manager","read":1,"write":1,"create":1,"submit":0,"cancel":0,"delete":1,"amend":0,"report":1,"export":1,"import":0,"share":1,"print":1,"email":1,"if_owner":0,"select":0,"doctype":"DocPerm"}],"states":[],"fields":[{"name":"o5kv6qb7a0","creation":"2026-01-05 14:35:29.969348","modified":"2026-01-05 14:35:29.969348","modified_by":"Administrator","owner":"Administrator","docstatus":0,"parent":"Joella","parentfield":"fields","parenttype":"DocType","idx":1,"fieldname":"section_break_hc3x","fieldtype":"Section Break","search_index":0,"show_dashboard":0,"hidden":0,"set_only_once":0,"allow_in_quick_entry":0,"print_hide":0,"report_hide":0,"reqd":0,"bold":0,"in_global_search":0,"collapsible":0,"unique":0,"no_copy":0,"allow_on_submit":0,"show_preview_popup":0,"permlevel":0,"ignore_user_permissions":0,"columns":0,"in_list_view":0,"fetch_if_empty":0,"in_filter":0,"remember_last_selected_value":0,"ignore_xss_filter":0,"print_hide_if_no_value":0,"allow_bulk_edit":0,"in_standard_filter":0,"in_preview":0,"read_only":0,"precision":"","length":0,"translatable":0,"hide_border":0,"hide_days":0,"hide_seconds":0,"non_negative":0,"is_virtual":0,"sort_options":0,"show_on_timeline":0,"make_attachment_public":0,"doctype":"DocField"}],"__last_sync_on":"2026-01-07T10:58:15.422Z"}', 'method': 'check_pending_migration', 'cmd': 'run_doc_method'}
+2026-01-07 13:00:41,715 ERROR frappe Error while inserting deferred Error Log record: Error Log o41pfuc23d: 'Title' ([Errno 2] No such file or directory: '/home/angele/library-bench/apps/library_management/library_management/library_management/doctype/joella/joella.json') will get truncated, as max characters allowed is 140
+Site: library.localhost
+Form Dict: {}
